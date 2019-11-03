@@ -23,13 +23,14 @@ def calculatePenalty(words, M):
   if tot_len > M:
     return None
   return (M - tot_len) ** 2
-  
+
 
 def pretty_print(words, M):
   sols = [0] *( len(words)+1)
   solution_dict = {}
   for i in range(len(words)-1, -1, -1):
     best = None
+    print("for git check")
     for j in range(i, len(words)):
       temp = calculatePenalty(words[i:j+1], M)
       if temp is None:
