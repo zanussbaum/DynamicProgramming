@@ -21,7 +21,7 @@ def read_input():
 def upper_bound(coins):
     """Determines the maximum value that needs to be checked to
     prove coins canonical."""
-    return coins[-1] * 2
+    return sum(coins[i] * (coins[i +1] - 1) for i in range(len(coins) - 1))
 
 def greedy(coins, value):
     """Determines the number of coins the greedy algorithm uses
@@ -86,6 +86,7 @@ def main():
     for i in range(1, upper + 1):
         if dynamic(coins, i) != greedy(coins, i):
             print("NON-CANONICAL")
+            print('fails on n={}'.format(i))
             return
 
     print('CANONICAL')
