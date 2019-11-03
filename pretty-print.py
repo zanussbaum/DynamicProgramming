@@ -23,6 +23,7 @@ def calculatePenalty(words, M):
   if tot_len > M:
     return None
   return (M - tot_len) ** 2
+  
 
 def pretty_print(words, M):
   sols = [0] *( len(words)+1)
