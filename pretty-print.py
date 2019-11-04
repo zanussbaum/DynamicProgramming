@@ -16,6 +16,15 @@ Usage: ./pretty-print.py M inputFile
 from sys import argv,exit
 
 def calculatePenalty(words, M):
+  """
+    Determines the penalty for a given list of words
+    and a line length in characters of M
+    params:
+      words: list of words 
+      M: max line length in characters
+    returns:
+      int: penalty for that length line.  None if line is too long
+  """
   tot_len = 0
   for word in words:
     tot_len += len(word) + 1
@@ -26,6 +35,12 @@ def calculatePenalty(words, M):
 
 
 def pretty_print(words, M):
+  """
+  Pretty prints a list of words with maximum line length M
+  params:
+    words: list of words to print
+    M: maximum line length, in characters
+  """
   sols = [0] *( len(words)+1)
   solution_dict = {}
   for i in range(len(words)-1, -1, -1):
@@ -49,8 +64,7 @@ def pretty_print(words, M):
     walker = solution_dict[walker]
 
     print(sub_str)
-  print(sols[0])
-  return sols[0]
+  print("Penalty: ", sols[0])
 
 def readFile(fname):
   """

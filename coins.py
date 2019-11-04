@@ -20,7 +20,12 @@ def read_input():
 
 def upper_bound(coins):
     """Determines the maximum value that needs to be checked to
-    prove coins canonical."""
+    prove coins canonical.
+    params:
+        coins: list of coin denominations
+    returns:
+        int: upper bound of number of coins we need to check
+    """
     return sum(coins[i] * (coins[i +1] - 1) for i in range(len(coins) - 1))
 
 def greedy(coins, value):
@@ -49,6 +54,18 @@ def greedy(coins, value):
     return num_coins
 
 def get_min(coins, change_list, current_change):
+    """Determines the minimum value of coins needed to make 
+    amount current_change change
+    params:
+        coins: list of coin denominations
+        change_list: number of coins used to solve old values
+        current_change: number of cents we try to make change for
+
+    returns:
+        int: number of coins needed to make change for current_change
+
+        Can we assume that we are also able to make correct change?
+    """
     min_value = float('inf')
 
     for coin in coins:
